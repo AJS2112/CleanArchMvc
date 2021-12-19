@@ -13,8 +13,8 @@ namespace CleanArhMvc.Infra.Data.EntitiesConfiguration
 
             builder.HasData(
                 new Category(1, "Material Escolar"),
-                new Category(1, "Eletrônicos"),
-                new Category(1, "Acessòrios")
+                new Category(2, "Eletrônicos"),
+                new Category(3, "Acessòrios")
             );
         }
     }

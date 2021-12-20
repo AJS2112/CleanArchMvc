@@ -18,8 +18,8 @@ namespace CleanArchMvc.WebUI.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var products = await _productService.GetProducts();
-            return View(products);
+            var productsDto = await _productService.GetProducts();
+            return View(productsDto);
         }
     }
 }

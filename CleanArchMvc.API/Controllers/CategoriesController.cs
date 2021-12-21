@@ -23,14 +23,14 @@ namespace CleanArchMvc.API.Controllers
         public async Task<ActionResult<IEnumerable<CategoryDTO>>> Get()
         {
             var categories = await _categoryService.GetCategories();
-            if(categories == null)
+            if (categories == null)
             {
                 return NotFound("Categories not found");
             }
             return Ok(categories);
         }
 
-        [HttpGet("{id:int}", Name ="GetCategory")]
+        [HttpGet("{id:int}", Name = "GetCategory")]
         public async Task<ActionResult<CategoryDTO>> Get(int id)
         {
             var category = await _categoryService.GetById(id);
@@ -63,6 +63,18 @@ namespace CleanArchMvc.API.Controllers
             await _categoryService.Update(categoryDTO);
 
             return Ok(categoryDTO);
+        }
+
+        [HttpDelete("{id:int}")]
+        public async Task<ActionResult<CategoryDTO>> Delete(int id)
+        {
+            var category = await _categoryService.GetById(id);
+            
+            if (category == null)
+                return NotFound("Category not found");
+
+            await _categoryService.Remove(id);
+            return Ok(category);
         }
     }
 }
